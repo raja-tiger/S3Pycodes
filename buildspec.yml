@@ -22,11 +22,11 @@ phases:
   build:
     commands:
         - echo Copying the Config files to S3 ...
-        - aws s3 cp Config/*.json s3://raja-s3-ohio-landingzone/Config/
+#         - aws s3 cp Config/*.json s3://raja-s3-ohio-landingzone/Config/
         - echo Copying python codes to S3
-        - aws s3 cp PyCodes/*.py s3://raja-s3-ohio-landingzone/Notebooks/
+#         - aws s3 cp PyCodes/*.py s3://raja-s3-ohio-landingzone/Notebooks/
         - echo Copying Dependency files to S3
-        - aws s3 cp Files/*.sh s3://raja-s3-ohio-landingzone/Files/
+        - aws s3 cp ./Files/*.sh s3://raja-s3-ohio-landingzone/Files/
   post_build:
     commands:
     # - There are no build commands
