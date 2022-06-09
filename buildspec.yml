@@ -22,7 +22,8 @@ phases:
   build:
     commands:
         - echo Copying the Config files to S3 ...
-        - aws s3 cp ./Config/*.json s3://raja-s3-ohio-landingzone/Config/
+        - aws s3 cp ./Config/app-config.json s3://raja-s3-ohio-landingzone/Config/
+        - aws s3 cp ./Config/spark-config.json s3://raja-s3-ohio-landingzone/Config/
         - echo Copying python codes to S3
         - aws s3 cp ./PyCodes/*.py s3://raja-s3-ohio-landingzone/Notebooks/
         - echo Copying Dependency files to S3
