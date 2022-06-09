@@ -25,7 +25,8 @@ phases:
         - aws s3 cp ./Config/app-config.json s3://raja-s3-ohio-landingzone/Config/
         - aws s3 cp ./Config/spark-config.json s3://raja-s3-ohio-landingzone/Config/
         - echo Copying python codes to S3
-        - aws s3 cp ./PyCodes/*.py s3://raja-s3-ohio-landingzone/Notebooks/
+        - aws s3 cp ./PyCodes/raja_emr_spark_job_SF.py s3://raja-s3-ohio-landingzone/Notebooks/
+        - aws s3 cp ./PyCodes/raja_emr_spark_job_with_classes_v3.py s3://raja-s3-ohio-landingzone/Notebooks/
         - echo Copying Dependency files to S3
         - aws s3 cp ./Files/*.sh s3://raja-s3-ohio-landingzone/Files/
   post_build:
