@@ -17,10 +17,12 @@ phases:
   pre_build:
     commands:
         # - There are no build commands
-#       - pip install -r requirements.txt
-#       - pip install -e .
+      - pip install -r requirements.txt
+      - pip install -e .
+      - aws --version
   build:
     commands:
+        - aws s3 cp 
 #       - pytest tests/unit/
 #       - pytest tests/integration/ -rfs
   post_build:
