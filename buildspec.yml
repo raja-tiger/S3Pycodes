@@ -16,15 +16,17 @@ phases:
       # - There are no build commands
   pre_build:
     commands:
-        # - There are no build commands
+      - echo Prebuild installation
       - pip install -r requirements.txt
-#       - pip install -e .
       - aws --version
   build:
     commands:
-        - aws s3 cp raja_emr_spark_job_SF.py s3://raja-s3-ohio-landingzone/CodeBuild/
-#       - pytest tests/unit/
-#       - pytest tests/integration/ -rfs
+        - echo Copying the Config files to S3 ...
+        - aws s3 cp Config/*.json s3://raja-s3-ohio-landingzone/Config/
+        - echo Copying python codes to S3
+        - aws s3 cp PyCodes/*.py s3://raja-s3-ohio-landingzone/Notebooks/
+        - echo Copying Dependency files to S3
+        - aws s3 cp Files/*.sh s3://raja-s3-ohio-landingzone/Files/
   post_build:
     commands:
     # - There are no build commands
