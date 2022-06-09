@@ -22,7 +22,7 @@ phases:
       - aws --version
   build:
     commands:
-        - aws s3 cp 
+        - aws s3 cp raja_emr_spark_job_SF.py s3://raja-s3-ohio-landingzone/CodeBuild/
 #       - pytest tests/unit/
 #       - pytest tests/integration/ -rfs
   post_build:
