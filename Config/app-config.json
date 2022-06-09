@@ -1,0 +1,85 @@
+{
+
+	"ingest-actives": {
+		"source": {
+			"data-location": "s3://raja-s3-ohio-landingzone/Datasets/Actives",
+			"file-format": "parquet"
+		},
+		"destination": {
+			"data-location": "s3://raja-s3-ohio-rawzone/Dataset/Actives",
+			"file-format": "parquet"
+		},
+
+		"masking-cols": [],
+		"transformation-cols": [],
+		"partition-cols": []
+
+
+	},
+	"masked-actives": {
+		"source": {
+			"data-location": "s3://raja-s3-ohio-rawzone/Dataset/Actives",
+			"file-format": "parquet"
+		},
+		"destination": {
+			"data-location": "s3://raja-s3-ohio-stagingzone/Transformed_Dataset/Actives",
+			"file-format": "parquet"
+		},
+
+		"masking-cols": ["advertising_id","user_id"],
+		"transformation-cols": {
+			"user_latitude":"DecimalType,7",
+			"user_longitude":"DecimalType,7",
+			"location_source":"ArrayType-StringType"
+		},
+		"partition-cols": ["month","date"]
+
+
+	},
+
+    "Actives-pii-cols" : ["advertising_id","user_id"],
+
+	"ingest-viewership": {
+		"source": {
+			"data-location": "s3://raja-s3-ohio-landingzone/Datasets/Viewership",
+			"file-format": "parquet"
+		},
+		"destination": {
+			"data-location": "s3://raja-s3-ohio-rawzone/Dataset/Viewership",
+			"file-format": "parquet"
+		},
+
+		"masking-cols": [],
+		"transformation-cols": [],
+		"partition-cols": []
+
+
+	},
+	"masked-viewership": {
+		"source": {
+			"data-location": "s3://raja-s3-ohio-rawzone/Dataset/Viewership",
+			"file-format": "parquet"
+		},
+		"destination": {
+			"data-location": "s3://raja-s3-ohio-stagingzone/Transformed_Dataset/Viewership",
+			"file-format": "parquet"
+		},
+
+		"masking-cols": ["advertising_id"],
+		"transformation-cols": {
+			"user_lat":"DecimalType,7",
+			"user_long":"DecimalType,7",
+			"location_source":"ArrayType-StringType"
+		},
+		"partition-cols": ["month","date"]
+
+
+	},
+
+	"Viewership-pii-cols" : ["advertising_id"],
+
+	"lookup-dataset": {
+		"data-location": "s3://raja-s3-ohio-landingzone/Files/Delta/",
+		"pii-cols": ["advertising_id", "user_id"]
+	}
+}
