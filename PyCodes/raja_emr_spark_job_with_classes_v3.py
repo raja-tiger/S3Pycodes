@@ -95,7 +95,7 @@ class Transform:
         insert_dict = {}
         
         for col in pii_cols:
-            if col in masked_actives.columns:
+            if col in df.columns:
                 columns_needed += [col,"Masked_"+col]
         
         source_columns_used = columns_needed + ['begin_date','update_date']
@@ -178,8 +178,6 @@ if __name__ == "__main__":
     
     spark.stop()
 
-
-# In[ ]:
 
 
 
