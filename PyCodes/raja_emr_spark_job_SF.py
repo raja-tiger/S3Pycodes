@@ -113,6 +113,7 @@ class Transform:
         
         updatedColumnsToInsert = df_source.alias("updates").join(targetTable.toDF().alias("dtName"), pii_cols).where(_condition)
         
+        #Creates mergekey in table based on masked userid and advertisement id
         stagedUpdates = (
           updatedColumnsToInsert.selectExpr('NULL as mergeKey',*[f"updates.{i}" for i in df_source.columns]).union(df_source.selectExpr("concat("+','.join([x for x in pii_cols])+") as mergeKey", "*")))
         
