@@ -94,7 +94,7 @@ class Transform:
         except pyspark.sql.utils.AnalysisException:
             print('Table does not exist')
             df_source = df_source.withColumn("flag_active",f.lit("true"))
-            df_source.write.format("delta").mode("overwrite").save(lookupDataLocation+datasetName)
+            df_source.repartition(1).write.format("delta").mode("overwrite").save(lookupDataLocation+datasetName)
             print('Table Created Sucessfully!')
             targetTable = DeltaTable.forPath(spark,lookupDataLocation+datasetName)
             delta_df = targetTable.toDF()
